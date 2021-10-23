@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react"
 import "./Button.scss"
 
 const Button = ({
@@ -8,7 +8,6 @@ const Button = ({
     style,
     className
 }) => {
-
     const btnClassName = `button button-${variant || "primary"} ${className}`;
 
     return (

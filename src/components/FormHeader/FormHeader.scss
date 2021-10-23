@@ -1,26 +1,26 @@
 @import "src/css/color";
 
 .form-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-  img {
-    margin-bottom: 20px;
+    img {
+        margin-bottom: 20px;
 
-    @media (max-width: 767px) {
-      width: 55px;
+        @media (max-width: 767px) {
+            width: 55px;
+        }
     }
-  }
 
-  h2 {
-    color: $darkColor;
-    font-family: Montserrat, serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 29px;
-    text-align: center;
-    margin-bottom: 30px;
-  }
+    h2 {
+        color: $darkColor;
+        font-family: Montserrat, serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 29px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
 }

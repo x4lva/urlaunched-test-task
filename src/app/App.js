@@ -1,4 +1,4 @@
-import './App.scss';
+import "./App.scss";
 import Button from "../components/Button/Button";
 import IconButton from "../components/IconButton/IconButton";
 import MaleIcon from "../img/Male"
@@ -6,10 +6,15 @@ import FemaleIcon from "../img/Female"
 import OtherIcon from "../img/Other"
 import FormGroup from "../components/FormGroup/FormGroup";
 import FormInput from "../components/FormInput/FormInput";
-import {useState} from "react";
+import { useState } from "react";
 import FormHeader from "../components/FormHeader/FormHeader";
 
 function App() {
+    const [formData, setFormData] = useState({
+        email: '', password: '', repeatPassword: '', gender: 'Male'
+    });
+
+    const [formErrors, setFormErrors] = useState({});
 
     const formParams = {
         email: {
@@ -23,65 +28,53 @@ function App() {
         }
     }
 
-    const [formData, setFormData] = useState({
-        email: '', password: '', repeatPassword: '', gender: 'Male'
-    });
-
-    const [formErrors, setFormErrors] = useState({});
-
     const formValidateHandler = (e, params) => {
-        setFormErrors({...formErrors, [e.target.name]: []});
+        setFormErrors(prevFormErrors => ({...prevFormErrors, [e.target.name]: [] }));
 
         if (params?.required && e.target.value === '') {
-            setFormErrors({ ...formErrors, [e.target.name]: [ "Filed can not be empty"] })
+            setFormErrors(prevFormErrors => ({ ...prevFormErrors, [e.target.name]: [ "Field can not be empty"] }));
+            return true;
         }
 
         if (params?.email && !e.target.value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
-            setFormErrors({ ...formErrors, [e.target.name]: [ "Filed must be email"] })
+            setFormErrors(prevFormErrors => ({ ...prevFormErrors, [e.target.name]: [ "Field must be email"] }));
+            return true;
         }
 
         if (params?.minLength && e.target.value.length < params?.minLength) {
-            setFormErrors({ ...formErrors, [e.target.name]: [`Field must by longer than ${params.minLength}`] })
+            setFormErrors(prevFormErrors => ({ ...prevFormErrors, [e.target.name]: [ `Field must be longer than ${params.minLength}`] }));
+            return true;
         }
 
         if (params?.equals?.field && e.target.value !== formData[params.equals?.field]) {
-            setFormErrors({ ...formErrors, [e.target.name]: [`Field must equal  ${params.equals.name} field`] })
+            setFormErrors(prevFormErrors => ({ ...prevFormErrors, [e.target.name]: [ `Filed doest match with ${params.equals.name} field`] }));
+            return true;
         }
+
+        return false;
     }
 
     const formChangeHandler = (e, params) => {
-        formValidateHandler(e, params)
+        formValidateHandler(e, params);
 
-        setFormData({...formData, [e.target.name]: e.target.value})
-
-        console.log( e.target.value)
+        setFormData({...formData, [e.target.name]: e.target.value});
     }
 
     const formSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
         let hasErrors = false;
-        let errors = {};
-
-        for (const filed in formData) {
-            if (formData[filed] === '' && formParams[filed].required) {
-                errors = {...errors, [filed]: "Filed can not be empty"}
-                hasErrors = true
-            }
-        }
-        setFormErrors(errors)
-
-        for (const error in formErrors){
-            if (formErrors[error].length !== 0){
-                hasErrors = true
-            }
+        // Check form errors
+        for (const formFiled in formData) {
+            if (formValidateHandler({target: {name: formFiled, value: formData[formFiled]}}, formParams[formFiled]))
+                hasErrors = true;
         }
 
-        if (!hasErrors) alert(JSON.stringify(formData))
+        if (!hasErrors) alert(JSON.stringify(formData));
     }
 
     return (
-        <div className={"container align-items-center justify-content-center min-vh-100 d-flex"}>
+        <main className={"container min-vh-100"}>
             <div className="form-container shadow">
                 <FormHeader />
                 <form>
@@ -89,10 +82,10 @@ function App() {
                         <div className="row gx-3">
                             <label className="gender-radio col-4">
                                 <input checked={formData.gender === "Male"}
-                                    value={"Male"}
-                                    type="radio"
-                                    name={"gender"}
-                                    onChange={formChangeHandler}/>
+                                       value={"Male"}
+                                       type="radio"
+                                       name={"gender"}
+                                       onChange={formChangeHandler}/>
                                 <IconButton content={"Male"} icon={<MaleIcon />} />
                             </label>
                             <label className="gender-radio col-4">
@@ -149,13 +142,13 @@ function App() {
                 </form>
 
                 <div className="form-info">
-                    Already have an account? <a href="">Log in</a>
+                    Already have an account? <a href="#">Log in</a>
                 </div>
                 <div className="form-info">
-                    Review privacy and disclosures <a href="">here</a>
+                    Review privacy and disclosures <a href="#">here</a>
                 </div>
             </div>
-        </div>
+        </main>
     );
 }
 

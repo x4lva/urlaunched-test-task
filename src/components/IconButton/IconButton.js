@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 import "./IconButton.scss"
 
 const IconButton = (props) => {
 
-    const className = `icon-btn-wrapper ${props.className}`
+    const className = `icon-btn-wrapper ${props.className}`;
 
     return (
         <div className={className}>

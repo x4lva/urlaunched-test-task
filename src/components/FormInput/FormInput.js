@@ -16,24 +16,26 @@ const FormInput = (props) => {
         errors
     } = props
 
-    const initType = props.type
+    const initType = props.type;
 
-    const eyeIconClassName = `form-input-password-show ${type === "text" ? "active" : ""}`
+    const eyeIconClassName = `form-input-password-show ${type === "text" ? "active" : ""}`;
 
     return (
-        <div className={`form-input-wrapper ${(errors !== undefined && errors.length !== 0 ) ? ' error' : ''}`}>
-            <input onChange={(e) => onChange(e, {...params})} className={"form-input"} type={type} name={name} id={id} placeholder={placeholder} value={value} />
-            { initType === "password" && (
-                <div className={eyeIconClassName}>
-                    <EyeIcon  onClick={() => setType(type === "text" ? "password" : "text")} />
-                </div>
-            ) }
+        <React.Fragment>
+            <div className={`form-input-wrapper ${(errors !== undefined && errors.length !== 0 ) ? ' error' : ''}`}>
+                <input onChange={(e) => onChange(e, {...params})} className={"form-input"} type={type} name={name} id={id} placeholder={placeholder} value={value} />
+                { initType === "password" && (
+                    <div className={eyeIconClassName}>
+                        <EyeIcon onClick={() => setType(type === "text" ? "password" : "text")} />
+                    </div>
+                ) }
+            </div>
             { errors !== undefined && errors.length !== 0 ? (
                 <div className="form-input-errors">
                     { errors }
                 </div>
             ) : "" }
-        </div>
+        </React.Fragment>
     );
 };
 

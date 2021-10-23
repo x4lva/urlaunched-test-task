@@ -1,70 +1,72 @@
 @import "src/css/color";
 
 .form-input-wrapper {
-  position: relative;
+    position: relative;
 
-  .form-input-errors {
+    &.error .form-input {
+        outline-color: $dangerColor;
+        border-color: $dangerColor;
+        color: $dangerColor;
+
+        &::placeholder .form-input {
+            color: $dangerColor;
+        }
+    }
+}
+
+.form-input {
+    width: 100%;
+    border: 2px solid $lightColor;
+    border-radius: 16px;
+    padding: 20px;
+    color: $darkColor;
+    position: relative;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+
+    @media (max-width: 767px) {
+        padding: 15px 18px;
+    }
+
+    &::placeholder {
+        color: $lightColor;
+    }
+
+    &:focus {
+        outline-color: $primaryColorLight;
+    }
+}
+
+.form-input-password-show {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translate(0, -50%);
+
+    .eye-icon {
+        transition: .3s;
+
+        &:hover path {
+            fill: $primaryColorLight;
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.active .eye-icon path {
+        fill: $primaryColorLight;
+    }
+}
+
+.form-input-errors {
     color: $dangerColor;
     margin-top: 10px;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 20px;
-  }
-
-  &.error .form-input{
-    outline-color: $dangerColor;
-    border-color: $dangerColor;
-    color: $dangerColor;
-
-    &::placeholder .form-input {
-      color: $dangerColor;
-    }
-  }
-}
-
-.form-input {
-  width: 100%;
-  border: 2px solid #C1C1C1;
-  border-radius: 16px;
-  padding: 20px;
-  color: $darkColor;
-  position: relative;
-
-  font-family: Montserrat, serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 22px;
-
-  &::placeholder {
-    color: #C1C1C1;
-  }
-
-  &:focus {
-    outline-color: $primaryColorLight;
-  }
-}
-
-.form-input-password-show {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translate(0, -50%);
-
-  .eye-icon {
-    transition: .3s;
-
-    &:hover path {
-      fill: #4DB252;
-    }
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &.active .eye-icon path {
-    fill: #4DB252;
-  }
 }

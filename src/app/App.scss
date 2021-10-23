@@ -1,57 +1,63 @@
 @import "src/css/color";
 
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .form-container {
-  margin: 50px 0;
-  border-radius: 1em;
-  display: flex;
-  justify-content: center;
-  padding: 30px;
-  width: 570px;
-  flex-direction: column;
+    margin: 50px 0;
+    border-radius: 1em;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    width: 570px;
+    flex-direction: column;
 
-  form {
-    width: 100%;
-  }
-
-  @media (max-width: 767px) {
-    width: 340px;
-    padding: 15px;
-  }
-
-  .form-info {
-    color: $darkColor;
-    text-align: center;
-    font-size: 18px;
+    form {
+        width: 100%;
+    }
 
     @media (max-width: 767px) {
-      font-size: 14px;
+        width: 340px;
+        padding: 15px;
     }
 
-    a {
-      text-decoration: underline;
-      font-weight: 700;
-      color: $primaryColor;
-    }
+    .form-info {
+        color: $darkColor;
+        text-align: center;
+        font-size: 18px;
 
-    &:not(:last-child){
-      margin-bottom: 20px;
+        @media (max-width: 767px) {
+            font-size: 14px;
+        }
+
+        a {
+            text-decoration: underline;
+            font-weight: 700;
+            color: $primaryColor;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
     }
-  }
 }
 
 .gender-radio input {
-  display: none;
+    display: none;
 
-  &:checked ~ .icon-btn-wrapper .icon-btn{
-    border-color: $primaryColor;
+    &:checked ~ .icon-btn-wrapper .icon-btn {
+        border-color: $primaryColor;
 
-    .icon-btn-content{
-      color: $primaryColor;
-      font-weight: 600;
+        .icon-btn-content {
+            color: $primaryColor;
+            font-weight: 600;
+        }
+
+        svg path {
+            fill: $primaryColor;
+        }
     }
-
-    svg path {
-      fill: $primaryColor;
-    }
-  }
 }
