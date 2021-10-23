@@ -1,0 +1,71 @@
+@import "src/css/color";
+
+.form-input-wrapper {
+  position: relative;
+}
+
+.form-input {
+  width: 100%;
+  border: 2px solid #C1C1C1;
+  border-radius: 16px;
+  padding: 20px;
+  color: $darkColor;
+  position: relative;
+
+  font-family: Montserrat, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+
+  &[type="password"]{
+    font-family: "password", serif;
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    font-variant: normal;
+    text-tansform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 2px;
+    font-size: 11px;
+
+    &::placeholder {
+      font-family: Montserrat, serif;
+      letter-spacing: normal;
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+
+  &::placeholder {
+    color: #C1C1C1;
+  }
+
+  &:focus-visible {
+    outline-color: $primaryColor;
+  }
+}
+
+.form-input-password-show {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translate(0, -50%);
+
+  .eye-icon {
+    transition: .3s;
+
+    &:hover path {
+      fill: #4DB252;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.active .eye-icon path {
+    fill: #4DB252;
+  }
+}
