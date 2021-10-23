@@ -8,7 +8,7 @@
         border-color: $dangerColor;
         color: $dangerColor;
 
-        &::placeholder .form-input {
+        &::placeholder {
             color: $dangerColor;
         }
     }
