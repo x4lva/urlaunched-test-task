@@ -11,7 +11,9 @@ const FormInput = (props) => {
         id,
         placeholder,
         value,
-        onChange
+        onChange,
+        params,
+        errors
     } = props
 
     const initType = props.type
@@ -19,13 +21,18 @@ const FormInput = (props) => {
     const eyeIconClassName = `form-input-password-show ${type === "text" ? "active" : ""}`
 
     return (
-        <div className={"form-input-wrapper"}>
-            <input onChange={(e) => onChange(e)} className={"form-input"} type={type} name={name} id={id} placeholder={placeholder} value={value} />
+        <div className={`form-input-wrapper ${(errors !== undefined && errors.length !== 0 ) ? ' error' : ''}`}>
+            <input onChange={(e) => onChange(e, {...params})} className={"form-input"} type={type} name={name} id={id} placeholder={placeholder} value={value} />
             { initType === "password" && (
                 <div className={eyeIconClassName}>
                     <EyeIcon  onClick={() => setType(type === "text" ? "password" : "text")} />
                 </div>
             ) }
+            { errors !== undefined && errors.length !== 0 ? (
+                <div className="form-input-errors">
+                    { errors }
+                </div>
+            ) : "" }
         </div>
     );
 };

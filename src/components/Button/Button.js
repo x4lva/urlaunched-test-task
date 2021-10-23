@@ -5,13 +5,14 @@ const Button = ({
     variant,
     children,
     onClick,
-    style
+    style,
+    className
 }) => {
 
-    const className = `button button-${variant || "primary"}`;
+    const btnClassName = `button button-${variant || "primary"} ${className}`;
 
     return (
-        <button onClick={onClick} className={className} style={style}>
+        <button onClick={onClick} className={btnClassName} style={style}>
             {children}
         </button>
     );

@@ -2,6 +2,25 @@
 
 .form-input-wrapper {
   position: relative;
+
+  .form-input-errors {
+    color: $dangerColor;
+    margin-top: 10px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  &.error .form-input{
+    outline-color: $dangerColor;
+    border-color: $dangerColor;
+    color: $dangerColor;
+
+    &::placeholder .form-input {
+      color: $dangerColor;
+    }
+  }
 }
 
 .form-input {
@@ -18,32 +37,12 @@
   font-size: 18px;
   line-height: 22px;
 
-  &[type="password"]{
-    font-family: "password", serif;
-    font-style: normal;
-    font-weight: normal;
-    speak: none;
-    font-variant: normal;
-    text-tansform: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    letter-spacing: 2px;
-    font-size: 11px;
-
-    &::placeholder {
-      font-family: Montserrat, serif;
-      letter-spacing: normal;
-      font-size: 18px;
-      line-height: 22px;
-    }
-  }
-
   &::placeholder {
     color: #C1C1C1;
   }
 
-  &:focus-visible {
-    outline-color: $primaryColor;
+  &:focus {
+    outline-color: $primaryColorLight;
   }
 }
 

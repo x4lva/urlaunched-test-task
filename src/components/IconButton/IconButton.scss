@@ -1,6 +1,7 @@
 @import "src/css/color";
 
 .icon-btn {
+  transition: .3s;
   height: 90px;
   border: 2px solid #C1C1C1;
   border-radius: 16px;
@@ -8,6 +9,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   .icon-btn-img {
     margin-bottom: 5px;
