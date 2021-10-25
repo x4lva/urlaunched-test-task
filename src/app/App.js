@@ -77,7 +77,7 @@ function App() {
         <main className={"container min-vh-100"}>
             <div className="form-container shadow">
                 <FormHeader />
-                <form>
+                <form onSubmit={(e) => formSubmit(e)}>
                     <FormGroup title={"Gender"}>
                         <div className="row gx-3">
                             <label className="gender-radio col-4">
@@ -138,7 +138,7 @@ function App() {
                             placeholder={"Repeat password"} />
                     </FormGroup>
 
-                    <Button className={"mb-4"} onClick={(e) => formSubmit(e)} variant={"primary"}>Sign Up</Button>
+                    <Button className={"mb-4"} variant={"primary"}>Sign Up</Button>
                 </form>
 
                 <div className="form-info">
